@@ -1,0 +1,737 @@
+:root{
+    --body: #2f2f2f;
+    --purple: #a38eee;
+    --green: #11adb0;
+    --blue: #1d2055;
+}
+
+#app, .center{
+    outline: none !important;
+    overflow: hidden;
+}
+
+body, html{
+    width:100%;
+    height:100%;
+    position:absolute;
+    font-family:'Ebrima';
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Chrome/Safari/Opera */
+       -khtml-user-select: none; /* Konqueror */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none;
+    -webkit-font-smoothing: antialiased !important;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    overflow: hidden !important;
+ }
+
+::-webkit-scrollbar {
+    width: 14px;
+    z-index: 10000;
+}
+::-webkit-scrollbar:hover{
+   -webkit-transition: 0.7s ease-in;
+    -moz-transition: 0.7s ease-in;
+    -o-transition: 0.7s ease-in;
+   background-color: rgba(0, 0, 0, 0.5);
+   z-index: 10000;	
+}
+::-webkit-scrollbar-thumb {
+   height: 6px;
+   border: 4px solid rgba(0, 0, 0, 0);
+   background-clip: padding-box;
+   -webkit-border-radius: 7px;
+   background-color: rgba(178, 178, 178, 0.7);
+   z-index: 10000;
+}
+::-webkit-scrollbar-button{
+   width: 0;
+   height: 0;
+   display: none;
+   z-index: 10000;
+}
+::-webkit-scrollbar-corner {
+   background-color: transparent;
+}
+
+body,html{
+    background-color: #000 !important;
+    color: #fff !important;
+    font-family: 'Ubuntu', sans-serif !important;
+}
+
+#app{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: var(--body);
+    left: 50%;
+    transform: translate(-50%);
+    top: 0%;
+    outline: none;
+    color: #fff !important; 
+}
+
+.left .logo{
+    transform: rotate(-90deg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 7rem;
+    width: 5rem;
+    background-image: url('../img/logo.png');
+    margin: 2.5rem 1.5rem 2.5rem 2rem;
+    position: relative;
+    left: 80px;
+    transition: left 1s ease;
+    cursor: pointer;
+}
+
+.left .logo_ativa{
+    left: 50px;
+}
+
+.left a{
+    color: rgb(106, 106, 106);
+    padding: 0.975em 0 1.055em 3.475em;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    top: 1.5em;
+    display: block;
+}
+
+.left a span{
+    position: relative;
+    top: 0.2em;
+    left: -1.6em;
+}
+
+.active_link_bar{
+    color: #282828 !important;
+    background-color: #fff;
+}
+
+.left{
+    color: #fff;
+    font-size: 2em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: fixed;
+    height: 100%;
+    background: #282828;
+    box-shadow: 0 0 0.75rem 0 rgba(0,0,0,0.24), 0 0 0.75rem 0 rgba(0,0,0,0.48);
+}
+
+.center{
+    position: absolute;
+    width: calc(100% - 13em);
+    height: 100%;
+    left: 11em;
+    background: transparent;
+    overflow-y: scroll !important;
+    overflow-y: hidden;
+}
+
+.center h1{
+    padding: 1em;
+}
+
+input{
+    border: none;
+    outline: none;
+    display: inline-block;
+}
+
+.input_seach{
+    display: inline-block;
+    float: left;
+    font-size: 2em;
+    color: #fff;
+    top: 1em;
+    left: 1em;
+    position: relative;
+    color: #757575;
+    cursor: text;
+}
+
+.mobile .input_seach{
+    font-size: 6vw !important;
+}
+
+.search input{
+    padding: 1em;
+    background: transparent;
+    color: #757575;
+    font-size: 3em;
+}
+
+.active_link{
+    background: transparent !important;
+    color: #fff !important;
+}
+
+.videos .bottom h1, p{
+    padding: 0px;
+    position: relative;
+    left: 10px;
+    white-space: pre-wrap;
+    font-size: 1.5em;
+}
+
+p{
+    font-size: 1.3em;
+}
+
+.videos{
+    position: relative;
+    left: 1vw;
+    display: inline-block;
+    margin-left: 0.4vw;
+    overflow: hidden;
+    transition: 0.6s;
+    cursor: pointer;
+    padding-bottom: 2vw;
+}
+
+.videos_inativo{
+    color: #ccc !important;
+    margin-left: 0.5vw;
+}
+
+.videos_ativo{
+    background-color: #ebebeb;
+    box-shadow: 0 0 0.75rem 0 rgba(0,0,0,0.24), 0 0.75rem 0.75rem 0 rgba(0,0,0,0.48);
+    color: #585252;
+    transform: scale(1.25);
+    margin-left: 4vw;
+    margin-right: 3.6vw;
+}
+
+.videos_inativo p{
+    color: #ddd;
+}
+
+.videos .img_container{
+    position: relative;
+    width: 100%;
+    height: 12vw;
+    background: #000;
+}
+
+.videos .img_container img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.scroll{
+    max-width: auto;
+    position: absolute;
+    white-space: nowrap;
+    transition: 0.5s cubic-bezier(0.4, 0, 1, 1);
+    overflow-x: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.mobile .scroll{
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.videos{
+    width: 20vw;
+    height: 23vw;
+}
+
+.videos .bottom h1, p{
+    font-size: 1.5vw !important;
+}
+
+.videos p{
+    font-size: 1.2vw !important;
+}
+
+.splash{
+    width: 100%;
+    height: 100%;
+    background: #000;
+    position: fixed;
+    z-index: 100000;
+    top: 0px;
+    left: 0px;
+    background-image: url('../img/splash.png');
+    background-size: cover;
+    transform: scale(1);
+    transition: 1s;
+}
+
+.tabs{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 1rem 0.325rem;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 180px;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    top: 20px;
+    margin-left: 5px;
+    -moz-transform-origin: 50% 50%;
+    -o-transform-origin: 50% 50%;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.4em;
+    color: rgb(150, 150, 150);
+    transition: 0.6s;
+}
+
+.active_tab{
+    background: #ebebeb;
+    box-shadow: 0 0 0.75rem 0 rgba(0,0,0,0.24), 0 0.75rem 0.75rem 0 rgba(0,0,0,0.48);
+    color: #2f2f2f;
+}
+
+.mobile .left{
+    font-size: 20px;
+    left: -47px;
+}
+
+.mobile .left a span{
+    left: -0.6em;
+}
+
+.mobile .left .logo{
+    left: 0.7em;
+    position: relative;
+    transform: rotate(0deg);
+    top: -1.3em;
+    transition: top 1s ease;
+}
+
+.mobile .left .logo_ativa{
+    top: -2.4em;
+}
+
+.mobile .center{
+    left: 7em;
+}
+
+@media screen and (max-width: 1000px){
+    #app{
+        width: 100%;
+    }
+
+    .center{
+        width: 100%;
+        left: 10em;
+    }
+
+    .videos{
+        width: 30vw;
+        height: 40vw;
+    }
+
+    .videos .bottom h1{
+        font-size: 3vw !important;
+    }
+
+    .videos .bottom p{
+        font-size: 1.7vw !important;
+    }
+
+    .videos .img_container{
+        height: 21vw;
+    }
+
+}
+
+@media screen and (max-width: 800px){
+
+    .left{
+        font-size: 20px;
+    }
+
+    .scroll{
+        position: relative;
+        left: 0vw !important;
+    }
+
+    .videos{
+        width: 49vw !important;
+        height: 40vw !important;
+        padding: 1vw;
+    }
+
+    .videos .img_container{
+        height: 30vw;
+    }
+
+    
+
+}
+
+.mobile .videos .bottom h1{
+    font-size: 5vw !important;
+}
+
+.mobile .videos .bottom h1,p{
+    left: 2vw;
+}
+
+.mobile .videos .bottom p{
+    font-size: 3.7vw !important;
+}
+
+.mobile .left a{
+    color: rgb(106, 106, 106);
+    padding: 1.3em 0 1.055em 1.275em;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    top: -10em;
+    left: 128px;
+    display: inline-block;
+    float: left
+}
+
+.mobile .left .logo{
+    left: -0.7em;
+    position: relative;
+}
+
+.mobile .left {
+    font-size: 20px;
+    left: -47px;
+    width: 100%;
+    height: 62px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 10000000;
+    overflow: hidden !important;
+}
+
+.mobile .center{
+    height: calc(100% - 66px);
+    left: 0em;
+}
+
+.mobile .scroll{
+    white-space: normal;
+    overflow-y: scroll !important;
+    left: -2vw !important;
+    position: relative;
+    height: 100vw;
+}
+
+.mobile .scroll .videos{
+    width: 41vw !important;
+    height: 70vw !important;
+    padding: 1vw;
+    left: 3vw !important;
+    top: -2vw;
+}
+
+button{
+    width: 200px;
+    background: #6a6a6a;
+    outline: none;
+    border: none;
+    padding: 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 22px;
+    position: relative;
+    left: 20px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+button:hover{
+    background: #4a4a4a;
+}
+
+.mobile .center h1{
+    font-size: 7vw;
+}
+
+.white{
+    background: #f3f3f3 !important;
+}
+
+.white{
+    color: #151515;
+}
+
+.white .videos h1{
+    color: #151515;
+}
+
+.white .videos p{
+    color: #151515;
+}
+
+.night .videos h1{
+    color: #fff;
+}
+
+.night .videos p{
+    color: #fff;
+}
+
+.night .videos_ativo p{
+    color: #151515 !important;
+}
+
+.night .videos_ativo h1{
+    color: #151515 !important;
+}
+
+.night .videos_inativo{
+    color: #fff !important;
+}
+
+.night{
+    color: #fff;
+}
+
+.white .center{
+    color: #151515;
+}
+
+.white .active_tab{
+    background: #009688;
+    color: #fff;
+}
+
+.white .left{
+    background: #009688;
+}
+
+.white .active_link_bar{
+    background: #0f4843;
+    color: #fff !important;
+}
+
+.white .center{
+    color: #151515 !important;
+}
+
+.white .active_link{
+    color: #cecece !important;
+}
+
+.anime_view .img_container{
+    width: 10vw;
+    height: 14vw;
+    background-size: cover;
+    position: relative;
+    left: 2vw;
+    top: 14vw;
+    box-shadow: 0 0 0.75rem 0 rgba(0,0,0,0.24), 0 0 0.75rem 0 rgba(0,0,0,0.48);
+}
+
+.anime_view h1{
+    position: absolute;
+    top: 17vw;
+    left: 12vw;
+}
+
+.anime_view p{
+    position: relative;
+    top: 14vw;
+}
+
+.anime_view .voltar{
+    position: fixed;
+    font-size: 38px;
+    padding: 0.3em;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    margin-top: 1em;
+    margin-left: 1em;
+    background: #fff;
+    color: var(--body);
+    border-radius: 50px;
+    text-align: center;
+}
+
+.anime_view .voltar i{
+    position: relative;
+    top: 0.1em;
+}
+
+.mobile .anime_view h1{
+    font-size: 9vw !important;
+    left: 40vw;
+    top: 52vw;
+}
+
+.anime_view .voltar{
+    z-index: 1000;
+    box-shadow: 0 0 0.75rem 0 rgba(0,0,0,0.24), 0 0 0.75rem 0 rgba(0,0,0,0.48);
+}
+
+.mobile .anime_view p{
+    font-size: 6vw !important;
+    top: 30vw;
+}
+
+.mobile .anime_view .img_container{
+    width: 40vw;
+    height: 60vw;
+    top: 40vw;
+    left: 2vw;
+}
+
+.anime_view .background{
+    width: 100%;
+    height: 25vw;
+    position: absolute;
+    background-size: cover;
+}
+
+.anime_view h1{
+    text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.anime_view .desc{
+    font-size: 1.2vw !important;
+}
+
+.anime_view li{
+    list-style: none;
+    position: relative;
+    width: 20vw;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.anime_view li p{
+    top: 0px;
+    left: 1vw;
+}
+
+.anime_view .episodes{
+    position: relative;
+    padding-bottom: 3vw;
+    overflow: auto;
+    height: 20vw;
+    width: 22vw;
+    top: 12vw;
+    left: 4vw;
+}
+
+.mobile .anime_view p{
+    top: 38vw;
+    height: 50vw;
+    overflow: auto;
+}
+
+.mobile .anime_view .background{
+    height: 90vw;
+}
+
+.mobile .anime_view li{
+    width: 80vw;
+    height: 7vw;
+    padding: 2vw;
+    margin-top: 2vw;
+}
+
+.mobile .anime_view .episodes{
+    height: 90vw;
+    width: 90vw;
+    top: -2vw;
+}
+
+.mobile .anime_view li p{
+    top: -6vw;
+}
+
+.watch{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: #000;
+}
+
+.watch video{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+.watch .player{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(49,45,40,0.4738270308123249) 0%, rgba(49,45,40,0.2721463585434174) 100%);
+    transition: 1s ease;
+    z-index: -1000;
+    opacity: 0;
+}
+
+.watch .player .progress{
+    width: 90vw;
+    height: 1vw;
+    background: #ffffffab;
+    position: fixed;
+    bottom: 12vw;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 2px;
+    box-shadow: 2px 3px rgba(0,0,0,.10);
+}
+
+.watch .player .progress .subprogress .bolinha{
+    width: 1.5vw;
+    height: 1.5vw;
+    background: #fff;
+    border-radius: 50%;
+    top: -0.3vw;
+    position: relative;
+    left: -0.5vw;
+    box-shadow: 2px 3px rgba(0,0,0,.10);
+}
+
+.watch .player button{
+    width: 4vw;
+    background: #ffffff6b;
+    outline: none;
+    border: none;
+    padding: 20px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 22px;
+    position: fixed;
+    cursor: pointer;
+    transition: 1s;
+    height: 4vw;
+    box-shadow: 2px 3px rgba(0,0,0,.50);
+    bottom: 5vw;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    left: 50%;
+}
+
+.showPlayer{
+    opacity: 1 !important;
+    z-index: 1000 !important;
+}
+
+.watch .player .subprogress{
+    height: 100%;
+    position: absolute;
+    left: 0%;
+    background: red;
+}

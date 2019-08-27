@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" sizes="192x192" href="https://material.io/static/images/simple-lp/favicons/components-192x192.png">
+    <link rel="shortcut icon" href="https://material.io/static/images/simple-lp/favicons/components-72x72.png">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div id="app" :class="nightMode ? 'night' : 'white'" tabindex="-1"
+    v-on:keyup="keyBoard($event)">
+        <div >
+        <div :class="mobile ? 'mobile' : ''">
+        <div class="splash" v-if="!load">
+        </div>
+
+        <div class="left" @mouseover="hoverLeft()" v-if="!watched" :style="{ backgroundColor: cor_primary } ">
+            <div class="logo" @click="logoAnimatar" @mouseover="hoverLogo()" @mouseout="outLogo()" :class="logoAnimate ? 'logo_ativa' : '' "></div>
+            <a :style="{ color: cor_secundary } " v-for="youtubeLink in youtubeLinks " :class="youtubeLink.dentro ? 'active_link' : nothing() || youtubeLink.acessou ? 'active_link_bar' : ''" @click="acessar(youtubeLink)">
+            <span><i :class="youtubeLink.have_icon ? youtubeLink.icon : ''"></i></span></a>
+        </div>
+
+        <!-- search -->
+        <div class="center search" v-if="youtubeAcess.id == 0 && !watched" tabindex="-1" @keyup="search($event)">
+            <div v-if="mobile">
+                <input type="text" placeholder="Search">
+            </div>
+            <div v-else="">
+            <div v-if="termSearchs.length == 0">
+                    <p class="input_seach" type="text" placeholder="Search">Search</p>
+            </div>
+            <div v-else="" v-for="termSearch in termSearchs">
+                <p class="input_seach" type="text">{{ termSearch.letter }}</p>
+            </div>
+            </div>
+            <div class="recommend" style="top: 6.3em; position: relative;" v-if="searchAnimes.length > 0">
+                <h1>Animes search</h1>
+                <div class="scroll" v-bind:style="{ transform: 'translateX(' + scrollX + '%)'}">
+                <div class="videos" @mouseover="hoverOver(video)" v-for="searchAnime in searchAnimes" :class="searchAnime.hover ? 'videos_ativo' : 'videos_inativo'">
+                    <div class="img_container">
+                        <img :src="video.foto">
+                    </div>
+                    <div class="bottom">
+                        <h1>{{searchAnime.name}}</h1>
+                        <p>{{searchAnime.autor}}</p>
+                        <p>{{ searchAnime.views }} views * {{ searchAnime.date }}</p>
+                    </div>
+                </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="center search" v-if="youtubeAcess.id == 2 && !watched" tabindex="-1" @keyup="search($event)">
+            <h1>Settings</h1>
+
+            <h1>Night mode</h1>
+            <button v-if="nightMode" @click="nightModeA">Desativar</button>
+            <button v-else="" @click="nightModeA">Ativar</button>
+            <h1>Personalize</h1>
+            <h1>Background</h1>
+            <input type="text" v-model="cor_primary" placeholder="#2f2f2f" @keyup="saveColor">
+            <h1>Fonte color</h1>
+            <input type="text" v-model="cor_secundary" placeholder="#fff" @keyup="saveColor">
+
+        </div>
+
+        <div class="center search transitionwow" v-if="youtubeAcess.id == 1 && animeView && !watched" tabindex="-1">
+            <div class="anime_view">
+            <div class="background" :style="{ backgroundImage: 'url('+ animeViewTs.fotoback +')' } ">
+                
+            </div>
+            <div class="voltar" @click="voltarNavegacao">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <h1>{{ animeViewTs.name }}</h1>
+            <div class="img_container">
+                <img style="width: 100%; height: 100%; object-fit: cover;" :src="animeViewTs.foto" alt="">
+            </div>
+            <p class="desc">{{ animeViewTs.descricao }}</p>
+            <p>{{ animeViewTs.views }} views</p>
+            <h1 style="position: relative; top: 13vw; left: 4vw;">Episodes</h1>
+            <div class="episodes">
+                    <li v-for="episodes_anime in episodes_animes" @click="watch(episodes_anime, animeViewTs.id)">
+                        <p>{{ episodes_anime.ep }}</p>
+                    </li>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="watch" v-if="watched || watchEpisodes.length > 0">
+                <video id='myVideo' autoplay="true" class='video-js' preload='auto' data-setup='{}'>
+                  <source :src='watchEpisodes.video' type='video/mp4'>
+                  <p class='vjs-no-js'>
+                    To view this video please enable JavaScript, and consider upgrading to a web browser that
+                    <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+                  </p>
+                </video>
+            <div class="player">
+                <h1 style="left: 2vw; position: relative;">{{ animeViewTs.name }} - {{ watchEpisodes.ep }} </h1>
+                <div class="progress">
+                    <div class="subprogress" v-bind:style="{width: width + '%'} ">
+                        <div class="bolinha"></div>
+                    </div>
+                </div>
+                <button v-if="!play"  @click="played"><i class="fas fa-play"></i></button>
+                <button v-else="" @click="played"><i class="fas fa-pause"></i></button>
+            </div>
+        </div>
+        
+        <div class="center search" v-if="youtubeAcess.id == 1 && !animeView && !watched">
+               <div class="tabs" v-for="generer in generers" :class="where == generer.id ? 'active_tab' : ''" @click="changeTab(generer.id)">
+                {{ generer.name }}
+               </div>
+                <div class="recommend" v-if="where == 0">
+                            <h1>Animes</h1>
+                            <div class="scroll" v-bind:style="{ transform: 'translateX(' + scrollX + '%)'}">
+                            <div class="videos" @mouseover="hoverOver(video)" v-for="video in videos" :class="video.hover ? 'videos_ativo' : 'videos_inativo'" @click="openAnime(video)">
+                                <div class="img_container">
+                                    <img :src="video.foto">
+                                </div>
+                                <div class="bottom">
+                                    <h1>{{video.name}}</h1>
+                                    <p style="height: 4vw; overflow: hidden; position: relative; left: 0.2vw;">{{ video.descricao }}</p>
+                                    <p style="left: 0.2vw; top: 0vw;">{{ video.views }} views</p>
+                                </div>
+                            </div>
+                 </div>
+
+
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+             </div>
+
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./scripts/app.js"></script>
+</body>
+</html>
