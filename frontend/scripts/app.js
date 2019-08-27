@@ -224,7 +224,7 @@ var app = new Vue({
                         playair()
                         this.imVideo++
                         if(this.imVideo >= 1){
-                            this.scrollX = this.imVideo * 1.3 * 4 * -1
+                            this.scrollX = this.imVideo * 1.3 * 6 * -1
                         }
                     } else{
                         playBlock()
@@ -241,7 +241,7 @@ var app = new Vue({
                     if(this.imVideo > 0){
                         playair()
                         this.imVideo--
-                        this.scrollX = this.imVideo * 1.3 * 4 * -1
+                        this.scrollX = this.imVideo * 1.3 * 6 * -1
                     } else{
                         playToogle()
                         for(var i = 0; i < this.youtubeLinks.length;i++){
@@ -294,7 +294,7 @@ var app = new Vue({
             if (width <= 800){
                 this.scrollX = 0
             } else{
-                this.scrollX = this.imVideo * 1.3 * 4 * -1
+                this.scrollX = this.imVideo * 1.3 * 6 * -1
                 for(var i = 0; i < this.videos.length; i++){
                     this.videos[i].hover = false
                 }
